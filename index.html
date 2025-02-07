@@ -48,7 +48,7 @@
 
             todoValue.value = "";
       
-            if(newTodo.length!==0){
+            if(newTodo.length!==0 && !todoListArray.includes(newTodo)){
                 todoListArray.push(newTodo);
             addToLocalStorage(todoListArray);
 
