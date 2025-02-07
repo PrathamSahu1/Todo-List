@@ -39,6 +39,26 @@
 
         showTodoList();
 
+        const deleteTodo = (e) => {
+           let todoToDelete = e.target;
+           console.log(todoToDelete.textContent) 
+            
+           console.log(todoListArray)
+        
+            updatedTodoList = todoListArray.filter((element) => {
+               return element != todoToDelete.textContent;
+            })
+
+            // console.log(updatedTodoList);
+
+            addToLocalStorage(updatedTodoList);
+
+            todoToDelete.remove();
+            
+
+        }
+        
+
         function addTodo(e){
             e.preventDefault();
             // console.log("hello javascript");
@@ -59,6 +79,10 @@
 
         }
 
+         
+         todoList.addEventListener('click',(e) => {
+           deleteTodo(e);
+         })
 
         document.querySelector('.btn').addEventListener('click',(e) => {
           addTodo(e);
