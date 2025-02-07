@@ -18,14 +18,23 @@
         const todoList = document.querySelector('.todoList');
         const todoValue = document.querySelector('.todoValue');
 
+        function addToLocalStorage(todo){
+           return localStorage.setItem("todoList",JSON.stringify(todo));
+        }
+
         function addTodo(e){
             e.preventDefault();
             // console.log("hello javascript");
 
-            const liElement = document.createElement("li");
-            liElement.innerHTML = todoValue.value;
-            todoList.append(liElement);
+            let newTodo = todoValue.value.trim();
+      
+            if(newTodo.length!==0){
+            addToLocalStorage(newTodo);
 
+            const liElement = document.createElement("li");
+            liElement.innerHTML = newTodo;
+            todoList.append(liElement);
+            }
 
         }
 
