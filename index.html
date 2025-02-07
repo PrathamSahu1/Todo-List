@@ -28,6 +28,17 @@
            return localStorage.setItem("todoList",JSON.stringify(todo));
         }
 
+        const showTodoList = () => {
+            todoListArray = getFromLocalStorage("todoList");
+            todoListArray.forEach(element => {
+                const liElement = document.createElement("li");
+                liElement.innerHTML = element;
+                todoList.append(liElement);
+            });
+        }
+
+        showTodoList();
+
         function addTodo(e){
             e.preventDefault();
             // console.log("hello javascript");
