@@ -17,6 +17,12 @@
     <script>
         const todoList = document.querySelector('.todoList');
         const todoValue = document.querySelector('.todoValue');
+        let todoListArray = [];
+
+        const getFromLocalStorage = () => {
+          return JSON.parse(localStorage.getItem("todoList")) || [];
+        }
+        
 
         function addToLocalStorage(todo){
            return localStorage.setItem("todoList",JSON.stringify(todo));
@@ -25,11 +31,14 @@
         function addTodo(e){
             e.preventDefault();
             // console.log("hello javascript");
+            todoListArray = getFromLocalStorage();
 
             let newTodo = todoValue.value.trim();
+
       
             if(newTodo.length!==0){
-            addToLocalStorage(newTodo);
+                todoListArray.push(newTodo);
+            addToLocalStorage(todoListArray);
 
             const liElement = document.createElement("li");
             liElement.innerHTML = newTodo;
@@ -41,8 +50,7 @@
 
         document.querySelector('.btn').addEventListener('click',(e) => {
           addTodo(e);
-        }
-        )
+        })
         
 
     </script>
